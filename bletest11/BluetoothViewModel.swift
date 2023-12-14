@@ -28,7 +28,7 @@ class BluetoothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
     private var previousYAngle2: Float = 0.0
     private var previousZAngle2: Float = 0.0
     private let alphaEWMA: Float = 0.95 // Adjust as needed
-    private let alphaComplementary: Float = 0.05 // Adjust as needed
+    private let alphaComplementary: Float = 0.90 // Adjust as needed
     
     private var tempX: Float = 0.0
     private var tempY: Float = 0.0
@@ -113,7 +113,9 @@ class BluetoothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
                 let parameteAcc: [UInt8] = [0x02, 0x02, 0x00, 0x01, 0x34, 0x00, 0x01, 0x01, 0x10, 0x00, 0x02, 0x01, 0x08, 0x00, 0x04, 0x01, 0x03]
                 let dataAcc = Data(bytes: parameteAcc, count: 17)
 
-                peripheral.writeValue(dataAcc as Data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+                //peripheral.writeValue(dataAcc as Data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+                peripheral.writeValue(dataAcc, for: characteristic, type: .withResponse)
+
             }
         }
 
@@ -182,7 +184,7 @@ class BluetoothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
                 case 2:
                     processAccelerometerData(xSample, ySample, zSample)
                 case 5:
-                processGyroscopeData(xSample, ySample, zSample)
+                    processGyroscopeData(xSample, ySample, zSample)
                 default:
                     print("Unknown measurement ID: \(measId)")
                 }
@@ -203,9 +205,9 @@ class BluetoothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
         let filteredYAngle = applyEWMAFilter(currentInput: yAngleRaw, previousOutput: previousYAngle, alpha: alphaEWMA)
         let filteredZAngle = applyEWMAFilter(currentInput: zAngleRaw, previousOutput: previousZAngle, alpha: alphaEWMA)
         
-        tempX = filteredXAngle
-        tempY = filteredYAngle
-        tempZ = filteredZAngle
+        tempX = xAngleRaw
+        tempY = yAngleRaw
+        tempZ = zAngleRaw
         
         previousXAngle = filteredXAngle
         previousYAngle = filteredYAngle

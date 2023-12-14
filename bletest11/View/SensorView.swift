@@ -27,13 +27,13 @@ struct SensorView: View {
                     .padding()    // Add some padding around the text
             }
             VStack{
-                Text("X-axis DPS: \(sensorData.xDps)")
+                Text("X Gyr: \(sensorData.xDps)")
                     .font(.body)
                     .padding()
-                Text("Y-axis DPS: \(sensorData.yDps)")
+                Text("Y Gyr \(sensorData.yDps)")
                     .font(.body)
                     .padding()
-                Text("Z-axis DPS: \(sensorData.zDps)")
+                Text("Z Gyr: \(sensorData.zDps)")
                     .font(.body)
                     .padding()
             }
