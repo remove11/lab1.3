@@ -17,6 +17,7 @@
 		CE8A1FF92B2AFD6800371C76 /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A1FF82B2AFD6800371C76 /* BluetoothViewModel.swift */; };
 		CE8A1FFC2B2AFE8D00371C76 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A1FFB2B2AFE8D00371C76 /* UtilityExtensions.swift */; };
 		CE8A1FFF2B2B051300371C76 /* GyroscopeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A1FFE2B2B051300371C76 /* GyroscopeDataModel.swift */; };
+		CE8A20032B2F880700371C76 /* InternalSensorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A20022B2F880700371C76 /* InternalSensorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		CE8A1FF82B2AFD6800371C76 /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
 		CE8A1FFB2B2AFE8D00371C76 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 		CE8A1FFE2B2B051300371C76 /* GyroscopeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroscopeDataModel.swift; sourceTree = "<group>"; };
+		CE8A20022B2F880700371C76 /* InternalSensorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalSensorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				CE83F8F82B275D5A00C53B8A /* SensorDataModel.swift */,
 				CE8A1FF82B2AFD6800371C76 /* BluetoothViewModel.swift */,
 				CE8A1FFB2B2AFE8D00371C76 /* UtilityExtensions.swift */,
+				CE8A20022B2F880700371C76 /* InternalSensorModel.swift */,
 			);
 			path = bletest11;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				CE8A1FFC2B2AFE8D00371C76 /* UtilityExtensions.swift in Sources */,
 				CE83F8E92B25E20800C53B8A /* bletest11App.swift in Sources */,
 				CE83F8F72B275CF400C53B8A /* SensorView.swift in Sources */,
+				CE8A20032B2F880700371C76 /* InternalSensorModel.swift in Sources */,
 				CE8A1FF92B2AFD6800371C76 /* BluetoothViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
