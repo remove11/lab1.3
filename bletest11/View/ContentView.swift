@@ -10,11 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject private var bluetoothViewModel = BluetoothViewModel()
+    @ObservedObject private var internalSensorModel = InternalSensorModel()
 
     var body: some View {
         NavigationView {
             VStack(){
-                NavigationLink(destination: InternalSensorVew()) {
+                NavigationLink(destination: SensorView().environmentObject(internalSensorModel.sensorData)) {
                         Text("Use Internal Sensor")
                             .font(.headline)
                             .fontWeight(.bold)
