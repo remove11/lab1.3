@@ -27,7 +27,7 @@ class BluetoothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
     private var previousXAngle2: Float = 0.0
     private var previousYAngle2: Float = 0.0
     private var previousZAngle2: Float = 0.0
-    private let alphaEWMA: Float = 0.95 // Adjust as needed
+    private let alphaEWMA: Float = 0.1 // Adjust as needed
     private let alphaComplementary: Float = 0.90 // Adjust as needed
     
     private var tempX: Float = 0.0
@@ -69,6 +69,12 @@ class BluetoothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
         self.peripheralBLE = peripheral
         self.peripheralBLE?.delegate = self
         centralManager?.connect(peripheralBLE!, options: nil)
+    }
+    
+    func disconnect(){
+        guard let peri = self.peripheralBLE else { return }
+        
+        centralManager?.cancelPeripheralConnection(peri)
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -200,7 +206,8 @@ class BluetoothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
         let xAngleRaw = atan2(Float(ySample), Float(zSample)) * (180 / .pi)
         let yAngleRaw = atan2(Float(xSample), Float(zSample)) * (180 / .pi)
         let zAngleRaw = atan2(sqrt(Float(xSample) * Float(xSample) + Float(ySample) * Float(ySample)), Float(zSample)) * (180 / .pi)
-        // Apply EWMA filter
+      
+        
         let filteredXAngle = applyEWMAFilter(currentInput: xAngleRaw, previousOutput: previousXAngle, alpha: alphaEWMA)
         let filteredYAngle = applyEWMAFilter(currentInput: yAngleRaw, previousOutput: previousYAngle, alpha: alphaEWMA)
         let filteredZAngle = applyEWMAFilter(currentInput: zAngleRaw, previousOutput: previousZAngle, alpha: alphaEWMA)
